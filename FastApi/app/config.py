@@ -1,7 +1,9 @@
 import os
+from dotenv import load_dotenv
 
-class Config:
-    SECRET_KEY = os.getenv("SECRET_KEY", "secret123")
-    SQLALCHEMY_DATABASE_URI = os.getenv("DATABASE_URL", "sqlite:///db.sqlite3")
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
-    JWT_SECRET_KEY = os.getenv("JWT_SECRET_KEY", "jwtsecret123")
+load_dotenv()
+
+DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://postgres:apa@localhost:5432/attendance_db")
+SECRET_KEY = os.getenv("SECRET_KEY", "secret123")
+ACCESS_TOKEN_EXPIRE_MINUTES = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", "60"))
+GOOGLE_MAPS_API_KEY = os.getenv("GOOGLE_MAPS_API_KEY", "")
